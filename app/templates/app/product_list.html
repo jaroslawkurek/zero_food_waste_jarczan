@@ -1,0 +1,93 @@
+{% extends "app/main.html" %}
+
+{% block content %}
+
+<div class="container bg-dark">
+    <div class="p-2"></div>
+    <div class="row text-center">
+        <div class="col-sm-4">
+            <div class="card bg-primary h-100">
+                <div class="card-header">
+                    <h5 class="card-title fs-6">All products</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text fs-3">{{all_products}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card bg-success h-100">
+                <div class="card-header">
+                    <h5 class="card-title fs-6">Long until expiration</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text fs-3">{{long_until}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card bg-info h-100">
+                <div class="card-header">
+                    <h5 class="card-title fs-6">Close to expiration</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text fs-3">{{close_to_exp}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card bg-warning h-100">
+                <div class="card-header">
+                    <h5 class="card-title fs-6">Almost Expired</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text fs-3">{{almost_expired}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="card bg-danger h-100">
+                <div class="card-header">
+                    <h5 class="card-title fs-6">Expired</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text fs-3">{{expired}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2"></div>
+</div>
+
+<div class="p-2"></div>
+
+
+<div class="table-responsive">
+    <div class="card bg-secondary">
+        <a type="button" class="btn btn-success btn-lg btn-block" href="{% url 'add_product' %}">Add Product</a>
+    </div>
+    <table class="table table-bordered align-middle table-dark table-hover text-center">
+        <thead>
+            <tr>
+                <th scope="col">Product name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Expiration Date</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        {% for product in products %}
+        <tbody>
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.exp_date|date:'d/m/Y' }}</td>
+                <td><a type="button" class="btn btn-primary btn-sm" href="{% url 'update_product' product.id %}">Edit</a></td>
+                <td><a type="button" class="btn btn-danger btn-sm" href="{% url 'remove_product' product.id %}">Remove</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

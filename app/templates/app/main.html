@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <title>Respect Your Food</title>
+    </head>
+    <body class="bg-light">
+        <div class="container bg-secondary">
+            <div class="p-2"></div>
+
+            <div class="card-header bg-dark">
+                <ul class="nav nav-pills justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'product_list' %}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">User Profile</a>
+                    </li>
+                    <li class="nav-item btn-danger">
+                        <a class="nav-link text-light" href="#">LOGOUT</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="p-2"></div>
+            
+            <div class="card bg-dark text-center text-light">
+                <div class="card-body">
+                    <h5 class="card-title">Respect Your Food</h5>
+                    <p class="card-text">Lorem Ipsum Camioloro</p>
+                </div>
+            </div>
+            
+            <div class="p-2"></div>
+
+            {% block content %}
+            {% endblock %}
+
+            <footer class="bg-dark text-center text-lg-start text-light">
+                <div class="text-center p-2">
+                    Respect Your Food © 2021
+                </div>
+            </footer>
+
+            <div class="p-2"></div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

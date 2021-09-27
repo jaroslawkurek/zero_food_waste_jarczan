@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/django/.cache/pypoetry/virtualenvs/zero-food-waste-jarczan-zh-WD9X1-py3.8/bin/python3.8",
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
+}

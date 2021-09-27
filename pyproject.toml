@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "zero_food_waste_jarczan"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.2.5"
+psycopg2-binary = "^2.9.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^3.9.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
