@@ -1,5 +1,6 @@
 # Ignore compiled Python files
 *.pyc
+*.env
 
 # Ignore Django's settings file (if using different settings files for different environments)
 **/settings.py
