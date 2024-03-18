@@ -6,19 +6,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0001_initial'),
+        ("app", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='name',
-            field=models.CharField(default='dupa', max_length=200),
+            model_name="product",
+            name="name",
+            field=models.CharField(default="dupa", max_length=200),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='product',
-            name='quantity',
+            model_name="product",
+            name="quantity",
             field=models.IntegerField(default=0),
         ),
     ]

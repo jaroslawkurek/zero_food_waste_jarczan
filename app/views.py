@@ -7,32 +7,32 @@ from .forms import ProductForm
 
 
 def index(request):
-    params = {'products': Product.objects.all()}
-    return render(request, 'app/product_list.html', params)
+    params = {"products": Product.objects.all()}
+    return render(request, "app/product_list.html", params)
 
 
 def register(request):
-    return HttpResponse('register')
+    return HttpResponse("register")
 
 
 def login(request):
-    return HttpResponse('login')
+    return HttpResponse("login")
 
 
 def logout(request):
-    return HttpResponse('logout')
+    return HttpResponse("logout")
 
 
 def user_view(request, user_id):
-    return HttpResponse('user_view %s' % user_id)
+    return HttpResponse("user_view %s" % user_id)
 
 
 def user_edit(request, user_id):
-    return HttpResponse('user_edit %s' % user_id)
+    return HttpResponse("user_edit %s" % user_id)
 
 
 def user_remove(request, user_id):
-    return HttpResponse('user_remove %s' % user_id)
+    return HttpResponse("user_remove %s" % user_id)
 
 
 def count_long_until_exp():
@@ -87,14 +87,14 @@ def product_list(request):
     almost_expired = count_almost_expired()
     expired = count_expired()
     context = {
-        'products': products,
-        'all_products': all_products,
-        'long_until': long_until,
-        'close_to_exp': close_to_exp,
-        'almost_expired': almost_expired,
-        'expired': expired
+        "products": products,
+        "all_products": all_products,
+        "long_until": long_until,
+        "close_to_exp": close_to_exp,
+        "almost_expired": almost_expired,
+        "expired": expired,
     }
-    return render(request, 'app/product_list.html', context)
+    return render(request, "app/product_list.html", context)
 
 
 def add_product(request):
@@ -103,9 +103,9 @@ def add_product(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/product_list/')
-    context = {'form': form}
-    return render(request, 'app/add.html', context)
+            return redirect("/product_list/")
+    context = {"form": form}
+    return render(request, "app/add.html", context)
 
 
 def update_product(request, pk):
@@ -116,15 +116,15 @@ def update_product(request, pk):
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('/product_list/')
-    context = {'form': form, 'product': product}
-    return render(request, 'app/update.html', context)
+            return redirect("/product_list/")
+    context = {"form": form, "product": product}
+    return render(request, "app/update.html", context)
 
 
 def remove_product(request, pk):
     product = Product.objects.get(id=pk)
     if request.method == "POST":
         product.delete()
-        return redirect('/product_list/')
-    context = {'product': product}
-    return render(request, 'app/remove.html', context)
+        return redirect("/product_list/")
+    context = {"product": product}
+    return render(request, "app/remove.html", context)
