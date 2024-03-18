@@ -8,6 +8,19 @@ def format(c):
 
 
 @task
-def lint(c):
-    """Format code with Black."""
+def pylint(c):
+    """Lint code with Pylint ."""
+    c.run("pylint .")
+
+
+@task
+def flake8(c):
+    """Lint code with Flake8."""
     c.run("pflake8 .")
+
+
+@task
+def lint(c):
+    """Lint code with Flake8 and Pylint."""
+    c.run("pflake8 .")
+    c.run("pylint .")

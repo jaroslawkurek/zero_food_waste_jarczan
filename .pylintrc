@@ -1,0 +1,22 @@
+[MASTER]
+
+[MESSAGES CONTROL]
+disable = C0330, C0325, C0114, C0115, C0116
+
+[FORMAT]
+
+[REPORTS]
+
+[BASIC]
+
+[IMPLEMENTATION]
+
+[STYLE]
+
+[LOGGING]
+
+[MISCELLANEOUS]
+init-hook="import os, sys; sys.path.append(os.path.dirname(os.path.abspath(__file__)))"
+
+[TYPECHECK]
+ignored-modules=django.core.urlresolvers, django.conf.urls
