@@ -2,25 +2,35 @@ from invoke import task
 
 
 @task
-def format(c):
-    """Format code with Black."""
-    c.run("black .")
+def style(context, hide=False, path="."):
+    context.run(f"black {path}", hide=hide)
+    context.run(f"isort {path}", hide=hide)
 
 
 @task
-def pylint(c):
-    """Lint code with Pylint ."""
-    c.run("pylint .")
+def flake8(context, hide=False, path="."):
+    context.run(f"pflake8 {path}", hide=hide)
 
 
 @task
-def flake8(c):
-    """Lint code with Flake8."""
-    c.run("pflake8 .")
+def pylint(context, hide=False, path="."):
+    context.run(f"pylint {path}", hide=hide)
 
 
-@task
-def lint(c):
-    """Lint code with Flake8 and Pylint."""
-    c.run("pflake8 .")
-    c.run("pylint .")
+@task(aliases=["pr"])
+def pull_request(context):
+    green = "\033[32m"
+    white = "\033[37m"
+
+    print("```")
+    style(context, hide=True)
+    print(f"{green}Style: Done")
+
+    print("```")
+    flake8(context, hide=True)
+    print(f"Linting with Flake8: Done{white}")
+
+    print("```")
+    pylint(context, hide=True)
+    print(f"Linting with Pylint: Done{white}")
+    print("```")

@@ -1,4 +1,5 @@
 from datetime import date
+
 from .models import Product
 
 today = date.today()

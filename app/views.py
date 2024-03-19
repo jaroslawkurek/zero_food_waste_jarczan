@@ -1,9 +1,10 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
 import datetime
 
-from .models import Product
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+
 from .forms import ProductForm
+from .models import Product
 
 
 def index(request):

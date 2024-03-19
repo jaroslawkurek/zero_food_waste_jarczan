@@ -1,4 +1,5 @@
 [MASTER]
+ignore=migrations
 
 [MESSAGES CONTROL]
 disable = C0330, C0325, C0114, C0115, C0116
