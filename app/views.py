@@ -2,9 +2,42 @@ import datetime
 
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .forms import ProductForm
-from .models import Product
+from .models import Account, CustomAccountManager, Product
+from .serializers import AccountSerializer, TokenSerializer
+from .tokens import create_token
+
+
+class AccountList(APIView):
+    """
+    List all accounts, or create a new account.
+    """
+
+    def post(self, request, format=None):
+        serializer = AccountSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        user = Account.objects.get(email=serializer.data["email"])
+        token = create_token(user)
+        print(token)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class ActivateUser(APIView):
+    """
+    Activate User
+    """
+
+    def post(self, request, format=None):
+        serializer = TokenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = Account.objects.get(id=serializer.data["id"])
+        CustomAccountManager.activate_user(user)
+        return Response(status=status.HTTP_200_OK)
 
 
 def index(request):
